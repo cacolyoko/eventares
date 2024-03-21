@@ -1,26 +1,56 @@
 ---
-
+import ChevronDown from "@/components/ChevronDown.astro";
 ---
 
-<header class="w-full h-40 px-10 flex items-center justify-between">
+<header
+  class="hidden bg-black w-full lg:h-40 lg:px-10 md:flex flex-col md:flex-row md:items-center md:justify-between"
+>
   <a href="#home">
     <img
-      class="w-[245px] h-auto"
+      class="lg:w-[245px] h-auto"
       src="/img/EventAresLogo.webp"
       alt="Logo EventAres"
     />
   </a>
   <nav
-    class="flex text-white gap-8 uppercase tracking-[0.1em] justify-center font-medium"
+    class="flex text-white lg:gap-8 uppercase tracking-[0.1em] lg:justify-center font-medium"
   >
     <a href="#">Sobre mí</a>
-    <a href="#">Eventos</a>
+    <div class="relative">
+      <button
+        class="dropdown-button flex justify-center items-center uppercase tracking-[0.1em] gap-1 cursor-pointer pb-2"
+      >
+        <span>Eventos</span>
+        <ChevronDown class:list={"w-6 h-6 motion-safe:transition"} />
+      </button>
+      <div class="absolute hidden bg-black py-3 px-4">
+        <a href="#" class="block py-2">Corporativos</a>
+        <a href="#" class="block py-2">Sociales</a>
+      </div>
+    </div>
     <a href="#">FAQ</a>
     <a href="#">Contacto</a>
     <a href="#">Blog</a>
   </nav>
   <button
-    class="bg-white w-72 h-16 py-5 uppercase tracking-[0.2em] text-center align-middle font-medium"
-    >Pide tu presupuesto</button
+    class="bg-white w-72 h-16 uppercase tracking-[0.2em] text-center align-middle font-medium"
   >
+    Pide tu presupuesto
+  </button>
 </header>
+
+<script>
+  const $dropDownButton = document.querySelector(".dropdown-button");
+
+  $dropDownButton?.addEventListener("click", () => {
+    const $dropDownMenu = $dropDownButton.nextElementSibling;
+
+    if ($dropDownMenu?.classList.contains("hidden")) {
+      $dropDownButton.querySelector("svg")?.classList.add("rotate-180");
+      $dropDownMenu?.classList.remove("hidden");
+    } else {
+      $dropDownButton.querySelector("svg")?.classList.remove("rotate-180");
+      $dropDownMenu?.classList.add("hidden");
+    }
+  });
+</script>
