@@ -5,7 +5,11 @@ export default {
 		fontFamily: {
 			'noto-serif': ['Noto Serif SC', 'serif'],
 		},
-		extend: {},
+		extend: {
+			colors: {
+				accent: "var(--color-accent)",
+			},
+		},
 	},
 	plugins: [],
 }
