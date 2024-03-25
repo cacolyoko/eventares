@@ -1,0 +1,99 @@
+---
+import ChevronDown from "@/components/ChevronDown.astro";
+import Cross from "@/components/Cross.astro";
+import TwoBars from "@/components/TwoBars.astro";
+---
+
+<header class="lg:hidden top-0 z-10 bg-black w-full px-8 sticky">
+  <aside class="min-h-[100px] flex justify-between items-center">
+    <a href="#home">
+      <img
+        class="w-[165px] h-auto"
+        src="/img/EventAresLogo.webp"
+        alt="Logo EventAres"
+      />
+    </a>
+    <button class="hamburger-button">
+      <TwoBars class:list={"w-7 h-7 text-white"} />
+    </button>
+  </aside>
+  <div
+    class="mobile-menu fixed z-[888] w-full inset-0 px-8 hidden flex-col items-center bg-black text-white text-center uppercase tracking-[0.1em] font-medium overflow-scroll"
+  >
+    <aside class="min-h-[100px] w-full flex justify-between items-center">
+      <a href="#home">
+        <img
+          class="w-[165px] h-auto"
+          src="/img/EventAresLogo.webp"
+          alt="Logo EventAres"
+        />
+      </a>
+      <button class="cross-button">
+        <Cross class:list={"w-7 h-7 text-white"} />
+      </button>
+    </aside>
+    <nav class="flex flex-col gap-10 mt-5 items-center w-full">
+      <a href="#about-me" class="w-full">Sobre mí</a>
+      <hr class="h-[1px] w-full border-t-0 bg-white" />
+      <div class="relative w-full">
+        <button
+          class="dropdown-mobile w-full flex justify-center items-center uppercase tracking-[0.1em] gap-1 cursor-pointer"
+        >
+          <span>Eventos</span>
+          <ChevronDown class:list={"w-6 h-6 motion-safe:transition"} />
+        </button>
+        <div class="hidden bg-black w-full mt-7">
+          <hr class="h-[1px] w-full border-t-0 bg-white" />
+          <a href="#" class="block py-5 mt-3">Corporativos</a>
+          <a href="#" class="block py-5">Sociales</a>
+        </div>
+      </div>
+      <hr class="h-[1px] w-full border-t-0 bg-white" />
+      <a href="#">FAQ</a>
+      <hr class="h-[1px] w-full border-t-0 bg-white" />
+      <a href="#">Contacto</a>
+      <hr class="h-[1px] w-full border-t-0 bg-white" />
+      <a href="#">Blog</a>
+    </nav>
+    <button
+      class="bg-white w-72 h-16 my-10 py-5 uppercase tracking-[0.2em] text-center text-black align-middle font-medium"
+    >
+      Pide tu presupuesto
+    </button>
+  </div>
+</header>
+
+<script>
+  const $dropDownButtonMobile = document.querySelector(".dropdown-mobile");
+  const $hamburgerButton = document.querySelector(".hamburger-button");
+  const $crossButton = document.querySelector(".cross-button");
+  const $mobileMenu = document.querySelector(".mobile-menu");
+
+  $dropDownButtonMobile?.addEventListener("click", () => {
+    const $dropDownMenu = $dropDownButtonMobile.nextElementSibling;
+
+    if ($dropDownMenu?.classList.contains("hidden")) {
+      $dropDownButtonMobile.querySelector("svg")?.classList.add("rotate-180");
+      $dropDownMenu?.classList.remove("hidden");
+    } else {
+      $dropDownButtonMobile
+        .querySelector("svg")
+        ?.classList.remove("rotate-180");
+      $dropDownMenu?.classList.add("hidden");
+    }
+  });
+
+  $hamburgerButton?.addEventListener("click", () => {
+    $mobileMenu?.classList.remove("hidden");
+    $mobileMenu?.classList.add("flex");
+    document.body.classList.toggle("overflow-hidden");
+    document.body.classList.toggle("lg:overflow-auto");
+  });
+
+  $crossButton?.addEventListener("click", () => {
+    $mobileMenu?.classList.remove("flex");
+    $mobileMenu?.classList.add("hidden");
+    document.body.classList.toggle("overflow-hidden");
+    document.body.classList.toggle("lg:overflow-auto");
+  });
+</script>
