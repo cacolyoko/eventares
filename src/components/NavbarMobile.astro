@@ -68,6 +68,7 @@ import TwoBars from "@/components/TwoBars.astro";
   const $hamburgerButton = document.querySelector(".hamburger-button");
   const $crossButton = document.querySelector(".cross-button");
   const $mobileMenu = document.querySelector(".mobile-menu");
+  const links = $mobileMenu?.querySelectorAll("a");
 
   $dropDownButtonMobile?.addEventListener("click", () => {
     const $dropDownMenu = $dropDownButtonMobile.nextElementSibling;
@@ -95,5 +96,14 @@ import TwoBars from "@/components/TwoBars.astro";
     $mobileMenu?.classList.add("hidden");
     document.body.classList.toggle("overflow-hidden");
     document.body.classList.toggle("lg:overflow-auto");
+  });
+
+  links?.forEach((link) => {
+    link.addEventListener("click", () => {
+      $mobileMenu?.classList.remove("flex");
+      $mobileMenu?.classList.add("hidden");
+      document.body.classList.toggle("overflow-hidden");
+      document.body.classList.toggle("lg:overflow-auto");
+    });
   });
 </script>
