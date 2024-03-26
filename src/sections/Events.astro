@@ -3,12 +3,60 @@ import SocialCarousel from "@/components/SocialCarousel.astro";
 import CorporateCarousel from "@/components/CorporateCarousel.astro";
 ---
 
-<!-- TODO buscar otro tipo de carrusel, swiper es una basura -->
 <section>
-  <article class="bg-black w-full">
+  <article
+    id="eventos-corporativos"
+    class="bg-black w-full flex flex-col justify-center items-center px-8 md:px-10 py-10 xl:py-20"
+  >
+    <h2
+      class="font-noto-serif text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase font-bold mb-10"
+    >
+      Eventos Corporativos
+    </h2>
+    <p class="text-white max-w-[80ch] font-extralight mb-5">
+      En Eventares, entendemos que los eventos corporativos son mucho más que
+      reuniones o jornadas de trabajo. Son experiencias únicas e irrepetibles
+      que permiten conectar a nivel humano, crear vínculos y fomentar la
+      camaradería entre compañeros y socios.
+    </p>
+    <p class="text-white max-w-[80ch] font-extralight mb-5">
+      Nuestro equipo profesional se dedica a organizar eventos corporativos
+      memorables que reflejen la esencia y los valores de cada empresa. Buscamos
+      crear experiencias únicas que fomenten la motivación, el compromiso y la
+      productividad en el ámbito laboral.
+    </p>
+    <p class="text-white max-w-[80ch] font-extralight mb-5">
+      Con Eventares, los eventos corporativos se convierten en oportunidades
+      para celebrar logros, reconocer el trabajo duro y crear recuerdos
+      duraderos para todos los asistentes. Trabajamos juntos para hacer que cada
+      evento deje una marca perdurable.
+    </p>
     <CorporateCarousel />
   </article>
-  <article class="bg-white w-full">
-    <SocialCarousel />
+  <article
+    id="eventos-sociales"
+    class="bg-white w-full flex flex-col justify-center items-center px-8 md:px-10 py-10 xl:py-20"
+  >
+    <h2
+      class="font-noto-serif text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase font-bold mb-10"
+    >
+      Eventos Sociales
+    </h2>
+    <p class="max-w-[80ch] font-light mb-5">
+      En Eventares entendemos que los eventos familiares y sociales son momentos
+      mágicos, donde se crean recuerdos inolvidables y se fortalecen los lazos
+      de amor y amistad.
+    </p>
+    <p class="max-w-[80ch] font-light mb-5">
+      Nuestro equipo de profesionales se dedica a organizar eventos únicos y
+      personalizados, que reflejen la esencia de cada celebración y de cada
+      cliente.
+    </p>
+    <p class="max-w-[80ch] font-light mb-5">
+      Desde una fiesta de cumpleaños infantil llena de magia y juegos, hasta una
+      boda romántica bajo las estrellas, nos esforzamos por crear experiencias
+      inolvidables para nuestros clientes y sus invitados.
+    </p>
+    <!-- <SocialCarousel /> -->
   </article>
 </section>
