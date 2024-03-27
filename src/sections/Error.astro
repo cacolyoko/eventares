@@ -1,0 +1,44 @@
+---
+import EventaresLogoVertical from "@/components/EventaresLogoVertical.astro";
+
+interface Props {
+  error: string;
+  message: string;
+}
+
+const { error, message } = Astro.props;
+---
+
+<section
+  class="py-10 flex flex-wrap mx-auto place-items-center items-center justify-center md:py-32 bg-[url('/img/bg/page-not-found.webp')] bg-cover bg-center bg-no-repeat text-white"
+  style="mask-image: linear-gradient(black 90%, transparent 100%);"
+>
+  <a href="/">
+    <EventaresLogoVertical
+      class="h-auto w-[300px] md:w-[500px] drop-shadow-[5px_5px_2px_rgba(0,0,0,0.3)] m-5"
+    /></a
+  >
+  <aside
+    class="flex flex-col justify-center items-center text-center m-5 my-16"
+  >
+    <h1
+      class="font-noto-serif text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-[0.1em] uppercase font-bold mb-10 drop-shadow-[2px_2px_2px_rgba(0,0,0,0.5)]"
+    >
+      Error {error}
+    </h1>
+    <h2
+      class="text-2xl font-semibold uppercase drop-shadow-[2px_2px_2px_rgba(0,0,0,0.5)]"
+    >
+      {message}
+    </h2>
+    <p class="mt-5 max-w-80 text-xl drop-shadow-[0px_0px_2px_rgba(0,0,0,0.8)]">
+      ¡Hola! Lo sentimos, pero no pudimos encontrar lo que buscabas. Verifica
+      que la dirección URL sea correcta.
+    </p>
+    <a
+      href="/"
+      class="mt-7 inline-block px-8 py-4 bg-white uppercase tracking-[0.2em] font-medium text-black cursor-pointer hover:scale-105 hover:bg-accent hover:text-white transition-all"
+      >Volver</a
+    >
+  </aside>
+</section>
