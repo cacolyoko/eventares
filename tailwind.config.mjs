@@ -7,7 +7,10 @@ export default {
 		},
 		extend: {
 			colors: {
-				accent: "var(--color-accent)",
+				"accent": "var(--color-accent)",
+			},
+			transitionProperty: {
+				"max-height": "max-height",
 			},
 		},
 	},

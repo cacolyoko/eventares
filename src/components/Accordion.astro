@@ -1,0 +1,208 @@
+---
+import Minus from "./Minus.astro";
+import Plus from "./Plus.astro";
+---
+
+<div class="accordion text-white mx-auto max-w-3xl">
+  <button
+    class="accordion__button w-full px-2 py-5 border-y border-y-white/50 text-white flex justify-between items-center text-left"
+    id="accordion-1-button"
+    aria-expanded="false"
+    aria-controls="accordion-1-content"
+  >
+    <h3>¿Qué tipos de eventos corporativos y sociales organiza su empresa?</h3>
+    <Plus class:list={"accordion__plus w-6 h-6"} />
+    <Minus class:list={"accordion__minus hidden w-6 h-6"} />
+  </button>
+  <div
+    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    id="accordion-1-content"
+    aria-labelledby="accordion-1-button"
+  >
+    <p>
+      Organizamos una amplia gama de eventos, que incluyen conferencias,
+      seminarios, lanzamientos de productos, cenas de gala, bodas, fiestas de
+      cumpleaños, y más. Nos adaptamos a las necesidades y preferencias de
+      nuestros clientes para brindarles experiencias únicas y memorables en cada
+      ocasión.
+    </p>
+  </div>
+  <button
+    class="accordion__button w-full px-2 py-5 border-y border-y-white/50 text-white flex justify-between items-center text-left"
+    id="accordion-1-button"
+    aria-expanded="false"
+    aria-controls="accordion-1-content"
+  >
+    <h3>
+      ¿Cuál es el proceso de planificación y ejecución de un evento con su
+      empresa?
+    </h3>
+    <Plus class:list={"accordion__plus w-6 h-6"} />
+    <Minus class:list={"accordion__minus hidden w-6 h-6"} />
+  </button>
+  <div
+    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    id="accordion-1-content"
+    aria-labelledby="accordion-1-button"
+  >
+    <p>
+      Nuestro proceso comienza con una consulta inicial para comprender las
+      necesidades y objetivos del cliente. A partir de ahí, trabajamos en
+      conjunto para diseñar un plan detallado que incluya la selección de
+      ubicación, logística, catering, entretenimiento y cualquier otro aspecto
+      relevante.
+    </p>
+    <p>
+      Durante la ejecución del evento, nuestro equipo altamente capacitado se
+      encarga de todos los detalles para garantizar que todo salga según lo
+      planeado y que los invitados disfruten de una experiencia impecable.
+    </p>
+  </div>
+  <button
+    class="accordion__button w-full px-2 py-5 border-y border-y-white/50 text-white flex justify-between items-center text-left"
+    id="accordion-1-button"
+    aria-expanded="false"
+    aria-controls="accordion-1-content"
+  >
+    <h3>
+      ¿Qué servicios adicionales ofrece su empresa para mejorar la experiencia
+      del evento?
+    </h3>
+    <Plus class:list={"accordion__plus w-6 h-6"} />
+    <Minus class:list={"accordion__minus hidden w-6 h-6"} />
+  </button>
+  <div
+    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    id="accordion-1-content"
+    aria-labelledby="accordion-1-button"
+  >
+    <p>
+      Además de la planificación y coordinación básica del evento, ofrecemos una
+      variedad de servicios adicionales para mejorar la experiencia global. Esto
+      puede incluir diseño y decoración personalizados, servicios de catering de
+      alta calidad, entretenimiento en vivo, fotografía y videografía
+      profesional, transporte para invitados, gestión de RSVP, y más.
+    </p>
+    <p>
+      Nos esforzamos por satisfacer todas las necesidades de nuestros clientes y
+      hacer que sus eventos sean verdaderamente especiales.
+    </p>
+  </div>
+  <button
+    class="accordion__button w-full px-2 py-5 border-y border-y-white/50 text-white flex justify-between items-center text-left"
+    id="accordion-1-button"
+    aria-expanded="false"
+    aria-controls="accordion-1-content"
+  >
+    <h3>
+      ¿Cómo garantiza su empresa la calidad y el éxito de cada evento que
+      organiza?
+    </h3>
+    <Plus class:list={"accordion__plus w-6 h-6"} />
+    <Minus class:list={"accordion__minus hidden w-6 h-6"} />
+  </button>
+  <div
+    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-max-height duration-300 ease-in-out"
+    id="accordion-1-content"
+    aria-labelledby="accordion-1-button"
+  >
+    <p>
+      Nos comprometemos a ofrecer eventos de la más alta calidad y a asegurarnos
+      de que cada detalle esté perfectamente planeado y ejecutado. Contamos con
+      un equipo experimentado y dedicado que trabaja en estrecha colaboración
+      con nuestros clientes para entender sus visiones y convertirlas en
+      realidad.
+    </p>
+    <p>
+      Además, mantenemos altos estándares de excelencia en todos los aspectos de
+      nuestro trabajo, desde la selección de proveedores hasta la atención al
+      cliente, para garantizar que cada evento sea un éxito rotundo.
+    </p>
+  </div>
+</div>
+
+<style>
+  h3 {
+    @apply uppercase tracking-[0.2em] flex-1;
+  }
+</style>
+
+<script>
+  // TODO fix accordionContent height animation && implement multiple accordionButtons behaviour
+  function accordionSetup() {
+    const accordionMenus = document.querySelectorAll(
+      ".accordion",
+    ) as NodeListOf<HTMLElement>;
+    accordionMenus.forEach((accordionMenu) => {
+      const accordionButtons = accordionMenu.querySelectorAll(
+        ".accordion__button",
+      ) as NodeListOf<HTMLElement>;
+      const accordionContents = accordionMenu.querySelectorAll(
+        ".accordion__content",
+      ) as NodeListOf<HTMLElement>;
+
+      if (accordionButtons && accordionContents) {
+        accordionButtons.forEach((accordionButton, i) => {
+          const accordionContent = accordionContents.item(i) as HTMLElement;
+          const accordionPlus = accordionButton.querySelector(
+            ".accordion__plus",
+          ) as HTMLElement;
+          const accordionMinus = accordionButton.querySelector(
+            ".accordion__minus",
+          ) as HTMLElement;
+          // Calculate max-height including padding
+          const paddingTop = parseInt(
+            window.getComputedStyle(accordionContent).paddingTop,
+            10,
+          );
+          const paddingBottom = parseInt(
+            window.getComputedStyle(accordionContent).paddingBottom,
+            10,
+          );
+          const totalPadding = paddingTop + paddingBottom;
+          accordionButton.addEventListener("click", (event) => {
+            if (!accordionMenu.classList.contains("active")) {
+              // if accordion is currently closed, so open it
+              accordionMenu.classList.add("active");
+              accordionButton.setAttribute("aria-expanded", "true");
+
+              // set max-height to the height of the accordion content
+              // this makes it animate properly
+              accordionContent.classList.remove("hidden");
+              accordionContent.classList.remove("max-h-0");
+              accordionContent.classList.add(
+                `max-h-[${accordionContent.scrollHeight + totalPadding + "px"}]`,
+              );
+              accordionPlus.classList.add("hidden");
+              accordionMinus.classList.remove("hidden");
+            } else {
+              // accordion is currently open, so close it
+              accordionMenu.classList.remove("active");
+              accordionButton.setAttribute("aria-expanded", "false");
+
+              // set max-height to the height of the accordion content
+              // this makes it animate properly
+              accordionContent.classList.remove(
+                `max-h-[${accordionContent.scrollHeight + totalPadding + "px"}]`,
+              );
+              accordionContent.classList.add("max-h-0");
+              accordionPlus.classList.remove("hidden");
+              accordionMinus.classList.add("hidden");
+              // delay to allow close animation
+              setTimeout(() => {
+                accordionContent.classList.add("hidden");
+              }, 300);
+            }
+            event.preventDefault();
+            return false;
+          });
+        });
+      }
+    });
+  }
+
+  accordionSetup();
+
+  // runs on view transitions navigation
+  document.addEventListener("astro:after-swap", accordionSetup);
+</script>
