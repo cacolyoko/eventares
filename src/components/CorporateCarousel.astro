@@ -1,5 +1,86 @@
-<hr class={`w-full absolute h-[2px] border-t-0 bg-white`} />
+---
+import "swiper/css";
+import "swiper/css/navigation";
+import ChevronDown from "./ChevronDown.astro";
+---
 
-<style></style>
+<section class="swiper1 swiper-container mt-5 md:mt-10">
+  <hr
+    class={`w-[calc(100%+5rem)] absolute h-[2px] border-t-0 bg-white mx-auto`}
+  />
+  <div class="swiper-wrapper flex items-center">
+    {
+      Array.from({ length: 7 }).map((_, i) => (
+        <picture
+          class="swiper-slide bg-no-repeat bg-cover bg-center mx-10 hover:drop-shadow-[20px_20px_0px_white]"
+          style={`background-image: url('/img/corporate-events/img-${i + 1}.webp'); transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms;`}
+        />
+      ))
+    }
+  </div>
+  <div class="swiper-button-prev swiper-button">
+    <ChevronDown class:list={"rotate-90 text-black"} />
+  </div>
+  <div class="swiper-button-next swiper-button">
+    <ChevronDown class:list={"-rotate-90 text-black"} />
+  </div>
+</section>
 
-<script></script>
+<style>
+  .swiper-container {
+    @apply overflow-visible;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide {
+    @apply w-[300px] h-[300px] md:w-[500px] md:h-[500px];
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    @apply top-[45.5%] xl:top-[46.5%] z-[1];
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    content: "";
+  }
+
+  .swiper-button {
+    @apply hidden xl:flex bg-white w-20 h-20 p-6 justify-center items-center rounded-full opacity-50 hover:scale-110 hover:opacity-100 transition;
+  }
+</style>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Autoplay } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper1", {
+    // configure Swiper to use modules
+    modules: [Navigation, Autoplay],
+
+    // Optional parameters
+    direction: "horizontal",
+    loop: true,
+    slidesPerView: "auto",
+    centeredSlides: true,
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    autoplay: {
+      delay: 1500,
+      pauseOnMouseEnter: true,
+      reverseDirection: true,
+    },
+
+    speed: 500,
+  });
+</script>
