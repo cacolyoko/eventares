@@ -32,7 +32,7 @@ import TwoBars from "@/components/TwoBars.astro";
         <Cross class:list={"w-7 h-7 text-white"} />
       </button>
     </aside>
-    <nav class="flex flex-col gap-10 mt-5 items-center w-full">
+    <nav class="flex flex-col gap-10 mt-5 items-center w-full select-none">
       <a href="#about-me" class="w-full">Sobre mí</a>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
       <div class="relative w-full">
@@ -51,11 +51,18 @@ import TwoBars from "@/components/TwoBars.astro";
         </div>
       </div>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
-      <a href="#">FAQ</a>
+      <a href="#faq">FAQ</a>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
       <a href="#">Contacto</a>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
-      <a href="#">Blog</a>
+      <a
+        href="#"
+        class="flex flex-col justify-center items-center pointer-events-none"
+        >Blog<br /><span
+          class="text-accent -skew-x-6 text-xs font-light tracking-normal gap-1"
+          >Próximamente...</span
+        ></a
+      >
     </nav>
     <button
       class="bg-accent w-72 h-16 my-10 py-5 uppercase tracking-[0.2em] text-center align-middle font-medium text-white"
