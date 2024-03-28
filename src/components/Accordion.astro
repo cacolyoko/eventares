@@ -183,7 +183,7 @@ import Plus from "./Plus.astro";
               accordionContent.style.paddingBottom = "0rem";
               accordionPlus.classList.remove("hidden");
               accordionMinus.classList.add("hidden");
-              // accordionContent.classList.add("hidden");
+              setTimeout(() => accordionContent.classList.add("hidden"), 300);
             }
             event.preventDefault();
             return false;
