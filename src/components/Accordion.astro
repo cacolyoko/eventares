@@ -15,16 +15,19 @@ import Plus from "./Plus.astro";
     <Minus class:list={"accordion__minus hidden w-6 h-6"} />
   </button>
   <div
-    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    class="accordion__content hidden overflow-hidden font-extralight max-w-[80ch] px-2 transition-all"
+    style="max-height: 0;"
     id="accordion-1-content"
     aria-labelledby="accordion-1-button"
   >
-    <p>
+    <p class="mb-2">
       Organizamos una amplia gama de eventos, que incluyen conferencias,
       seminarios, lanzamientos de productos, cenas de gala, bodas, fiestas de
-      cumpleaños, y más. Nos adaptamos a las necesidades y preferencias de
-      nuestros clientes para brindarles experiencias únicas y memorables en cada
-      ocasión.
+      cumpleaños, y más.
+    </p>
+    <p>
+      Nos adaptamos a las necesidades y preferencias de nuestros clientes para
+      brindarles experiencias únicas y memorables en cada ocasión.
     </p>
   </div>
   <button
@@ -41,11 +44,12 @@ import Plus from "./Plus.astro";
     <Minus class:list={"accordion__minus hidden w-6 h-6"} />
   </button>
   <div
-    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    class="accordion__content hidden overflow-hidden font-extralight max-w-[80ch] px-2 transition-all"
+    style="max-height: 0;"
     id="accordion-1-content"
     aria-labelledby="accordion-1-button"
   >
-    <p>
+    <p class="mb-2">
       Nuestro proceso comienza con una consulta inicial para comprender las
       necesidades y objetivos del cliente. A partir de ahí, trabajamos en
       conjunto para diseñar un plan detallado que incluya la selección de
@@ -72,11 +76,12 @@ import Plus from "./Plus.astro";
     <Minus class:list={"accordion__minus hidden w-6 h-6"} />
   </button>
   <div
-    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-all duration-300 ease-in-out"
+    class="accordion__content hidden overflow-hidden font-extralight max-w-[80ch] px-2 transition-all"
+    style="max-height: 0;"
     id="accordion-1-content"
     aria-labelledby="accordion-1-button"
   >
-    <p>
+    <p class="mb-2">
       Además de la planificación y coordinación básica del evento, ofrecemos una
       variedad de servicios adicionales para mejorar la experiencia global. Esto
       puede incluir diseño y decoración personalizados, servicios de catering de
@@ -102,11 +107,12 @@ import Plus from "./Plus.astro";
     <Minus class:list={"accordion__minus hidden w-6 h-6"} />
   </button>
   <div
-    class="accordion__content hidden max-h-0 overflow-hidden font-extralight max-w-[80ch] px-2 py-5 transition-max-height duration-300 ease-in-out"
+    class="accordion__content hidden overflow-hidden font-extralight max-w-[80ch] px-2 transition-all"
+    style="max-height: 0;"
     id="accordion-1-content"
     aria-labelledby="accordion-1-button"
   >
-    <p>
+    <p class="mb-2">
       Nos comprometemos a ofrecer eventos de la más alta calidad y a asegurarnos
       de que cada detalle esté perfectamente planeado y ejecutado. Contamos con
       un equipo experimentado y dedicado que trabaja en estrecha colaboración
@@ -150,48 +156,34 @@ import Plus from "./Plus.astro";
           const accordionMinus = accordionButton.querySelector(
             ".accordion__minus",
           ) as HTMLElement;
-          // Calculate max-height including padding
-          const paddingTop = parseInt(
-            window.getComputedStyle(accordionContent).paddingTop,
-            10,
-          );
-          const paddingBottom = parseInt(
-            window.getComputedStyle(accordionContent).paddingBottom,
-            10,
-          );
-          const totalPadding = paddingTop + paddingBottom;
           accordionButton.addEventListener("click", (event) => {
-            if (!accordionMenu.classList.contains("active")) {
+            if (!accordionButton.classList.contains("active")) {
               // if accordion is currently closed, so open it
-              accordionMenu.classList.add("active");
+              accordionButton.classList.add("active");
               accordionButton.setAttribute("aria-expanded", "true");
 
               // set max-height to the height of the accordion content
               // this makes it animate properly
               accordionContent.classList.remove("hidden");
-              accordionContent.classList.remove("max-h-0");
-              accordionContent.classList.add(
-                `max-h-[${accordionContent.scrollHeight + totalPadding + "px"}]`,
-              );
+              accordionContent.style.maxHeight =
+                accordionContent.scrollHeight + 40 + "px";
+              accordionContent.style.paddingTop = "1.25rem";
+              accordionContent.style.paddingBottom = "1.25rem";
               accordionPlus.classList.add("hidden");
               accordionMinus.classList.remove("hidden");
             } else {
               // accordion is currently open, so close it
-              accordionMenu.classList.remove("active");
+              accordionButton.classList.remove("active");
               accordionButton.setAttribute("aria-expanded", "false");
 
               // set max-height to the height of the accordion content
               // this makes it animate properly
-              accordionContent.classList.remove(
-                `max-h-[${accordionContent.scrollHeight + totalPadding + "px"}]`,
-              );
-              accordionContent.classList.add("max-h-0");
+              accordionContent.style.maxHeight = "0px";
+              accordionContent.style.paddingTop = "0rem";
+              accordionContent.style.paddingBottom = "0rem";
               accordionPlus.classList.remove("hidden");
               accordionMinus.classList.add("hidden");
-              // delay to allow close animation
-              setTimeout(() => {
-                accordionContent.classList.add("hidden");
-              }, 300);
+              // accordionContent.classList.add("hidden");
             }
             event.preventDefault();
             return false;
