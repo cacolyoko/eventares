@@ -1,4 +1,8 @@
-<form action="" class="max-w-5xl flex flex-col mx-auto gap-9">
+<form
+  action="/"
+  method="post"
+  class="contact__form max-w-5xl flex flex-col mx-auto gap-9"
+>
   <div class="flex flex-col justify-center items-start w-full gap-2">
     <label
       for="name"
@@ -8,11 +12,14 @@
     <input
       type="text"
       name="name"
-      class="w-full h-[60px] px-5 outline-0"
+      class="contact__form-name w-full h-[60px] px-5 outline-0"
+      placeholder="Introduce tu nombre"
       required
     />
   </div>
-  <div class="flex flex-col justify-center items-start w-full gap-2">
+  <div
+    class="contact__form-email flex flex-col justify-center items-start w-full gap-2"
+  >
     <label
       for="email"
       class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
@@ -21,25 +28,62 @@
     <input
       type="email"
       name="email"
-      class="w-full h-[60px] px-5 outline-0"
+      class="contact__form-email w-full h-[60px] px-5 outline-0"
+      placeholder="Introduce tu email"
       required
     />
   </div>
   <div class="flex flex-col justify-center items-start w-full gap-2">
     <label
-      for="info"
+      for="message"
       class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
       >Cuéntame lo que necesitas</label
     >
     <textarea
-      name="info"
-      class="w-full px-5 py-4 min-h-[60px] h-[200px] outline-0"
+      name="message"
+      class="contact__form-message w-full px-5 py-4 min-h-[60px] h-[200px] outline-0"
       style="form-sizing: content;"
+      placeholder="Escribe aquí..."
       required></textarea>
   </div>
-  <button
+  <input
     type="submit"
-    class="bg-white text-black uppercase tracking-[0.2em] font-medium self-center w-[240px] h-16 hover:scale-105 hover:bg-accent hover:text-white transition-all"
-    >Enviar</button
-  >
+    class="contact__form-button bg-white text-black uppercase tracking-[0.2em] font-medium self-center w-[240px] h-16 hover:scale-105 hover:bg-accent hover:text-white transition-all cursor-pointer"
+    value="Enviar"
+  />
 </form>
+
+<script>
+  import { Resend } from "resend";
+
+  const resend = new Resend(import.meta.env.PUBLIC_RESEND_API_KEY);
+
+  const $contactForm = document.querySelector(
+    ".contact__form",
+  ) as HTMLFormElement;
+
+  const $formName = document.querySelector(
+    ".contact__form-name",
+  ) as HTMLInputElement;
+
+  const $formEmail = document.querySelector(
+    ".contact__form-email",
+  ) as HTMLInputElement;
+
+  const $formMessage = document.querySelector(
+    ".contact__form-message",
+  ) as HTMLInputElement;
+
+  $contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if ($formName && $formEmail && $formMessage) {
+      console.log($formName.value);
+      console.log($formEmail.value);
+      console.log($formMessage.value);
+      // resend.emails.send({
+      //   from: $formEmail.value.toString(),
+      // });
+    }
+  });
+</script>
