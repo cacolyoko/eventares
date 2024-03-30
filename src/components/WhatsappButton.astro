@@ -1,0 +1,47 @@
+---
+import WhatsappLogo from "./WhatsappLogo.astro";
+---
+
+<div
+  class="wa__button fixed bottom-[20px] right-6 z-50 text-right hover:scale-110 transition-transform"
+>
+  <div class="flex m-[7px] relative justify-end">
+    <div class="relative w-14 h-14" style="order: 2; animation-delay: 1s;">
+      <a
+        class="opacity-100 rounded-full block bg-[linear-gradient(to_bottom_right,rgb(77,194,71),rgb(136,204,89),rgb(196,214,108))] p-[5px] cursor-pointer overflow-hidden shadow-[0px_1px_7px_rgba(136,136,136,0.4)] transition-all relative z-50"
+        href="https://wa.me/34637539135"
+        target="_blank"
+      >
+        <WhatsappLogo />
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wa__button::after {
+    content: "";
+    border-radius: 50%;
+    border: 6px solid rgb(77, 194, 71);
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    height: 150%;
+    width: 150%;
+    transform: translate(-50%, -50%);
+    animation: 1.5s ease 0s infinite normal none running pulse;
+    opacity: 0;
+  }
+
+  @keyframes pulse {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+</style>
