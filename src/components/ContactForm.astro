@@ -53,8 +53,8 @@
 </form>
 
 <script>
-  const $submitButton = document.querySelector(
-    ".contact__form-button",
+  const $contactForm = document.querySelector(
+    ".contact__form",
   ) as HTMLInputElement;
   const $formName = document.querySelector(
     ".contact__form-name",
@@ -66,7 +66,7 @@
     ".contact__form-message",
   ) as HTMLInputElement;
 
-  $submitButton.addEventListener("click", (e) => {
+  $contactForm.addEventListener("submit", (e) => {
     setTimeout(() => {
       $formName.value = "";
       $formEmail.value = "";
