@@ -1,25 +1,24 @@
 <form
-  action="/"
-  method="post"
+  target="_blank"
+  action="https://formsubmit.co/info@eventares.com"
+  method="POST"
   class="contact__form max-w-5xl flex flex-col mx-auto gap-9"
 >
   <div class="flex flex-col justify-center items-start w-full gap-2">
     <label
-      for="name"
+      for="nombre"
       class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
-      >Nombre</label
+      >Nombre Completo</label
     >
     <input
       type="text"
-      name="name"
+      name="nombre"
       class="contact__form-name w-full h-[60px] px-5 outline-0"
-      placeholder="Introduce tu nombre"
+      placeholder="Introduce tu nombre completo (nombre y apellidos)"
       required
     />
   </div>
-  <div
-    class="contact__form-email flex flex-col justify-center items-start w-full gap-2"
-  >
+  <div class="flex flex-col justify-center items-start w-full gap-2">
     <label
       for="email"
       class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
@@ -35,12 +34,12 @@
   </div>
   <div class="flex flex-col justify-center items-start w-full gap-2">
     <label
-      for="message"
+      for="mensaje"
       class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
       >Cuéntame lo que necesitas</label
     >
     <textarea
-      name="message"
+      name="mensaje"
       class="contact__form-message w-full px-5 py-4 min-h-[60px] h-[200px] outline-0"
       style="form-sizing: content;"
       placeholder="Escribe aquí..."
@@ -54,36 +53,24 @@
 </form>
 
 <script>
-  import { Resend } from "resend";
-
-  const resend = new Resend(import.meta.env.PUBLIC_RESEND_API_KEY);
-
-  const $contactForm = document.querySelector(
-    ".contact__form",
-  ) as HTMLFormElement;
-
+  const $submitButton = document.querySelector(
+    ".contact__form-button",
+  ) as HTMLInputElement;
   const $formName = document.querySelector(
     ".contact__form-name",
   ) as HTMLInputElement;
-
   const $formEmail = document.querySelector(
     ".contact__form-email",
   ) as HTMLInputElement;
-
   const $formMessage = document.querySelector(
     ".contact__form-message",
   ) as HTMLInputElement;
 
-  $contactForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    if ($formName && $formEmail && $formMessage) {
-      console.log($formName.value);
-      console.log($formEmail.value);
-      console.log($formMessage.value);
-      // resend.emails.send({
-      //   from: $formEmail.value.toString(),
-      // });
-    }
+  $submitButton.addEventListener("click", (e) => {
+    setTimeout(() => {
+      $formName.value = "";
+      $formEmail.value = "";
+      $formMessage.value = "";
+    }, 1000);
   });
 </script>
