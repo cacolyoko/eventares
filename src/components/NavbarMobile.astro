@@ -14,7 +14,7 @@ import TwoBars from "@/components/TwoBars.astro";
       />
     </a>
     <button class="hamburger-button">
-      <TwoBars class:list={"w-7 h-7 text-white"} />
+      <TwoBars class:list={"w-7 h-7 text-white"} sWidth="1" />
     </button>
   </aside>
   <div
@@ -29,7 +29,7 @@ import TwoBars from "@/components/TwoBars.astro";
         />
       </a>
       <button class="cross-button">
-        <Cross class:list={"w-7 h-7 text-white"} />
+        <Cross class:list={"w-7 h-7 text-white"} sWidth="1" />
       </button>
     </aside>
     <nav class="flex flex-col gap-10 mt-5 items-center w-full select-none">
@@ -65,7 +65,7 @@ import TwoBars from "@/components/TwoBars.astro";
       >
     </nav>
     <button
-      class="bg-accent w-72 h-16 my-10 py-5 uppercase tracking-[0.2em] text-center align-middle font-medium text-white hover:scale-105 transition-transform"
+      class="open-modal-mobile bg-accent w-72 h-16 my-10 py-5 uppercase tracking-[0.2em] text-center align-middle font-medium text-white hover:scale-105 transition-transform"
     >
       Pide tu presupuesto
     </button>

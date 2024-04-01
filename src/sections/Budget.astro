@@ -1,0 +1,133 @@
+---
+import BudgetForm from "@/components/BudgetForm.astro";
+import Cross from "@/components/Cross.astro";
+---
+
+<section
+  class="modal fixed hidden justify-start md:justify-center xl:items-center inset-0 w-screen h-screen z-[9999] bg-black xl:bg-white/50 overflow-y-scroll xl:overflow-hidden"
+>
+  <article
+    class="relative bg-black text-white w-full h-auto xl:w-[1200px] xl:h-[800px] flex flex-col justify-start md:justify-between items-center px-8 pt-9 pb-10 lg:px-10 xl:px-20 md:py-10"
+  >
+    <button class="self-end md:absolute">
+      <Cross
+        class="close-modal md:top-8 md:right-8 min-w-7 min-h-7 xl:w-16 xl:h-16 cursor-pointer text-white"
+        sWidth="1"
+      />
+    </button>
+    <h2
+      class="font-noto-serif text-white text-center text-3xl lg:text-4xl xl:text-5xl uppercase font-bold mb-10"
+    >
+      Pide tu presupuesto
+    </h2>
+    <BudgetForm />
+  </article>
+</section>
+
+<script>
+  const $modal = document.querySelector(".modal") as HTMLElement;
+  const $openModal = document.querySelector(".open-modal") as HTMLButtonElement;
+  const $mobileOpenModal = document.querySelector(
+    ".open-modal-mobile",
+  ) as HTMLButtonElement;
+  const $mobileMenu = document.querySelector(".mobile-menu");
+  const $closeModal = document.querySelector(
+    ".close-modal",
+  ) as HTMLButtonElement;
+  const $budgetForm = document.querySelector(".budget__form");
+
+  // elementos del formulario
+  const $formName = document.querySelector(
+    ".budget__form-name",
+  ) as HTMLInputElement;
+  const $formEmail = document.querySelector(
+    ".budget__form-email",
+  ) as HTMLInputElement;
+  const $formPhone = document.querySelector(
+    ".budget__form-phone",
+  ) as HTMLInputElement;
+  const $formECorp = document.querySelector(
+    "#evento_corporativo",
+  ) as HTMLInputElement;
+  const $formESocial = document.querySelector(
+    "#evento_social",
+  ) as HTMLInputElement;
+  const $formPlace = document.querySelector(
+    ".budget__form-place",
+  ) as HTMLInputElement;
+  const $formPeople = document.querySelector(
+    ".budget__form-people",
+  ) as HTMLInputElement;
+  const $formStartDate = document.querySelector(
+    ".budget__form-start_date",
+  ) as HTMLInputElement;
+  const $formEndDate = document.querySelector(
+    ".budget__form-end_date",
+  ) as HTMLInputElement;
+
+  $budgetForm?.addEventListener("submit", () => {
+    setTimeout(() => {
+      $formName.value = "";
+      $formEmail.value = "";
+      $formPhone.value = "";
+      $formECorp.checked = false;
+      $formESocial.checked = false;
+      $formPlace.value = "";
+      $formPeople.value = "";
+      $formStartDate.value = "";
+      $formEndDate.value = "";
+
+      if (!$mobileMenu?.classList.contains("hidden")) {
+        $mobileMenu?.classList.remove("flex");
+        $mobileMenu?.classList.add("hidden");
+      }
+
+      document.body.classList.toggle("overflow-hidden");
+      document.body.classList.remove("lg:overflow-scroll");
+
+      $modal.classList.remove("animate-fade-in");
+      $modal.classList.add("animate-fade-out");
+
+      setTimeout(() => {
+        $modal.classList.remove("flex");
+        $modal.classList.add("hidden");
+      }, 500);
+    }, 1000);
+  });
+
+  $openModal.addEventListener("click", () => {
+    $modal.classList.remove("animate-fade-out");
+    $modal.classList.add("animate-fade-in");
+
+    $modal.classList.remove("hidden");
+    $modal.classList.add("flex");
+
+    document.body.classList.toggle("overflow-hidden");
+  });
+
+  $mobileOpenModal.addEventListener("click", () => {
+    $modal.classList.remove("animate-fade-out");
+    $modal.classList.add("animate-fade-in");
+
+    $modal.classList.remove("hidden");
+    $modal.classList.add("flex");
+  });
+
+  $closeModal.addEventListener("click", () => {
+    if (!$mobileMenu?.classList.contains("hidden")) {
+      $mobileMenu?.classList.remove("flex");
+      $mobileMenu?.classList.add("hidden");
+    }
+
+    document.body.classList.toggle("overflow-hidden");
+    document.body.classList.remove("lg:overflow-scroll");
+
+    $modal.classList.remove("animate-fade-in");
+    $modal.classList.add("animate-fade-out");
+
+    setTimeout(() => {
+      $modal.classList.remove("flex");
+      $modal.classList.add("hidden");
+    }, 500);
+  });
+</script>

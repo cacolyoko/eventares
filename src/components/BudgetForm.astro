@@ -1,0 +1,162 @@
+<form
+  target="_blank"
+  action="https://formsubmit.co/info@eventares.com"
+  method="POST"
+  class="budget__form flex md:flex-1 flex-col justify-center items-center w-full text-black gap-16"
+>
+  <div class="flex flex-col justify-center items-start gap-5 w-full">
+    <fieldset class="flex flex-col justify-center items-start gap-2 w-full">
+      <label
+        for="nombre"
+        class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+        >Nombre Completo</label
+      >
+      <input
+        type="text"
+        name="nombre"
+        class="budget__form-name w-full h-[60px] px-5 outline-0 rounded-none"
+        placeholder="Introduce tu nombre completo (nombre y apellidos)"
+        required
+      />
+    </fieldset>
+    <fieldset class="w-full flex flex-col md:flex-row gap-5 md:gap-10">
+      <div class="flex flex-col justify-center items-start gap-2 w-full">
+        <label
+          for="email"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Email</label
+        >
+        <input
+          type="email"
+          name="email"
+          class="budget__form-email w-full h-[60px] px-5 outline-0 rounded-none"
+          placeholder="Introduce tu email"
+          required
+        />
+      </div>
+      <div class="flex flex-col justify-center items-start gap-2 w-full">
+        <label
+          for="telefono"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Teléfono</label
+        >
+        <input
+          type="tel"
+          name="telefono"
+          class="budget__form-phone w-full h-[60px] px-5 outline-0 rounded-none"
+          placeholder="Introduce tu número de teléfono"
+          required
+        />
+      </div>
+    </fieldset>
+    <fieldset class="w-full flex flex-col md:flex-row gap-5 md:gap-10">
+      <fieldset
+        class="flex h-[60px] md:h-auto justify-start items-center gap-10"
+      >
+        <legend
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500 mb-2 md:mb-0"
+          >Tipo de evento</legend
+        >
+        <div class="flex items-center justify-center gap-3">
+          <input
+            type="radio"
+            id="evento_corporativo"
+            name="tipo_de_evento"
+            value="corporativo"
+          />
+          <label class="text-white cursor-pointer" for="evento_corporativo"
+            >Corporativo</label
+          >
+        </div>
+        <div class="flex items-center justify-center gap-3">
+          <input
+            type="radio"
+            id="evento_social"
+            name="tipo_de_evento"
+            value="social"
+          />
+          <label class="text-white cursor-pointer" for="evento_social"
+            >Social</label
+          >
+        </div>
+      </fieldset>
+      <div class="flex flex-col justify-center items-start gap-2 w-full">
+        <label
+          for="lugar"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Lugar del evento</label
+        >
+        <input
+          type="text"
+          name="lugar"
+          class="budget__form-place w-full h-[60px] px-5 outline-0 rounded-none"
+          placeholder="Introduce el nombre del lugar y localidad del evento"
+          required
+        />
+      </div>
+    </fieldset>
+    <fieldset class="w-full flex flex-col md:flex-row gap-5 md:gap-10">
+      <div
+        class="flex flex-col justify-center items-start gap-2 w-full xl:w-1/2"
+      >
+        <label
+          for="numero_de_asistentes"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Nº de asistentes</label
+        >
+        <input
+          type="text"
+          name="numero_de_asistentes"
+          class="budget__form-people w-full h-[60px] px-5 outline-0 rounded-none"
+          placeholder="1, 10, 100, 1000..."
+          oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+          required
+        />
+      </div>
+      <div class="flex flex-col justify-center items-start gap-2 w-full">
+        <label
+          for="fecha_inicio"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Fecha de inicio</label
+        >
+        <input
+          type="date"
+          name="fecha_inicio"
+          class="budget__form-start_date w-full h-[60px] px-5 outline-0 rounded-none"
+          required
+        />
+      </div>
+      <div class="flex flex-col justify-center items-start gap-2 w-full">
+        <label
+          for="fecha_fin"
+          class="text-white uppercase tracking-[0.1em] after:content-['*'] after:ml-0.5 after:text-red-500"
+          >Fecha de fin</label
+        >
+        <input
+          type="date"
+          name="fecha_fin"
+          class="budget__form-end_date w-full h-[60px] px-5 outline-0 rounded-none"
+          required
+        />
+      </div>
+    </fieldset>
+  </div>
+  <input
+    type="submit"
+    class="contact__form-button bg-white text-black uppercase tracking-[0.2em] font-medium self-center w-[240px] h-16 hover:scale-105 hover:bg-accent hover:text-white transition-all cursor-pointer rounded-none mb-16 xl:mb-0"
+    value="Enviar"
+  />
+</form>
+
+<script>
+  const $formStartDate = document.querySelector(
+    ".budget__form-start_date",
+  ) as HTMLInputElement;
+  const $formEndDate = document.querySelector(
+    ".budget__form-end_date",
+  ) as HTMLInputElement;
+
+  let today = new Date();
+  $formStartDate.min = today.toJSON().split("T")[0];
+  $formEndDate.min = today.toJSON().split("T")[0];
+</script>
