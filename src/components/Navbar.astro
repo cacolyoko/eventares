@@ -5,7 +5,7 @@ import ChevronDown from "@/components/ChevronDown.astro";
 <header
   class="hidden top-0 z-10 bg-black w-full lg:h-32 xl:h-40 lg:px-8 xl:px-10 lg:flex lg:flex-row lg:items-center lg:justify-between sticky"
 >
-  <a href="#home">
+  <a href="/#home">
     <img
       class="lg:w-[220px] xl:w-[245px] h-auto hover:scale-105 transition-transform"
       src="/img/EventAresLogo.webp"
@@ -15,7 +15,8 @@ import ChevronDown from "@/components/ChevronDown.astro";
   <nav
     class="flex text-white lg:gap-4 xl:gap-8 uppercase tracking-[0.1em] xl:justify-center items-center font-medium select-none"
   >
-    <a class="hover:text-accent transition-colors" href="#about-me">Sobre mí</a>
+    <a class="hover:text-accent transition-colors" href="/#about-me">Sobre mí</a
+    >
     <div class="relative">
       <button
         class="dropdown-button flex justify-center items-center uppercase tracking-[0.1em] gap-1 cursor-pointer hover:text-accent transition-colors"
@@ -25,17 +26,17 @@ import ChevronDown from "@/components/ChevronDown.astro";
       </button>
       <div class="absolute hidden bg-black py-3 px-4">
         <a
-          href="#eventos-corporativos"
+          href="/#eventos-corporativos"
           class="block py-2 hover:text-accent transition-colors">Corporativos</a
         >
         <a
-          href="#eventos-sociales"
+          href="/#eventos-sociales"
           class="block py-2 hover:text-accent transition-colors">Sociales</a
         >
       </div>
     </div>
-    <a class="hover:text-accent transition-colors" href="#faq">FAQ</a>
-    <a class="hover:text-accent transition-colors" href="#contact">Contacto</a>
+    <a class="hover:text-accent transition-colors" href="/#faq">FAQ</a>
+    <a class="hover:text-accent transition-colors" href="/#contact">Contacto</a>
     <a
       href="#"
       class="flex flex-col justify-center items-center pointer-events-none"
