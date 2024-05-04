@@ -4,7 +4,7 @@ import Cross from "@/components/Cross.astro";
 import TwoBars from "@/components/TwoBars.astro";
 ---
 
-<header class="lg:hidden top-0 z-10 bg-black w-full px-8 sticky">
+<header class="xl:hidden top-0 z-10 bg-black w-full px-8 sticky">
   <aside class="min-h-[100px] flex justify-between items-center">
     <a href="/#home">
       <img
@@ -50,6 +50,8 @@ import TwoBars from "@/components/TwoBars.astro";
           <a href="/#eventos-sociales" class="block py-5">Sociales</a>
         </div>
       </div>
+      <hr class="h-[1px] w-full border-t-0 bg-white" />
+      <a href="/#services">Servicios</a>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
       <a href="/#faq">FAQ</a>
       <hr class="h-[1px] w-full border-t-0 bg-white" />
@@ -97,14 +99,14 @@ import TwoBars from "@/components/TwoBars.astro";
     $mobileMenu?.classList.remove("hidden");
     $mobileMenu?.classList.add("flex");
     document.body.classList.toggle("overflow-hidden");
-    document.body.classList.toggle("lg:overflow-auto");
+    document.body.classList.toggle("xl:overflow-auto");
   });
 
   $crossButton?.addEventListener("click", () => {
     $mobileMenu?.classList.remove("flex");
     $mobileMenu?.classList.add("hidden");
     document.body.classList.toggle("overflow-hidden");
-    document.body.classList.toggle("lg:overflow-auto");
+    document.body.classList.toggle("xl:overflow-auto");
   });
 
   links?.forEach((link) => {
@@ -112,7 +114,7 @@ import TwoBars from "@/components/TwoBars.astro";
       $mobileMenu?.classList.remove("flex");
       $mobileMenu?.classList.add("hidden");
       document.body.classList.toggle("overflow-hidden");
-      document.body.classList.toggle("lg:overflow-auto");
+      document.body.classList.toggle("xl:overflow-auto");
     });
   });
 </script>
