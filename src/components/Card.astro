@@ -1,0 +1,31 @@
+---
+import ChevronDown from "./ChevronDown.astro";
+
+interface Props {
+  title: string;
+  desc: string;
+  elements: Array<string>;
+}
+
+const { title, desc, elements } = Astro.props;
+---
+
+<article
+  class="w-[450px] h-auto bg-black border-white border-2 drop-shadow-[15px_15px_0px_white] pb-10"
+>
+  <h3 class="text-white uppercase tracking-[0.2em] text-lg text-center my-4">
+    {title}
+  </h3>
+  <hr class="h-[1px] border-t-0 bg-white mx-12" />
+  <p class="text-white font-extralight px-8 mt-4">{desc}</p>
+  <section class="text-white font-extralight px-8 py-2">
+    {
+      elements.map((el) => (
+        <article class="flex gap-2 mt-2">
+          <ChevronDown class="-rotate-90 w-4 text-accent" />
+          <span class="flex-1">{el}</span>
+        </article>
+      ))
+    }
+  </section>
+</article>

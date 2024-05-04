@@ -1,0 +1,52 @@
+---
+import Card from "@/components/Card.astro";
+---
+
+<section id="services" class="px-8 md:px-10 py-10 xl:py-20 bg-black">
+  <h2
+    class="font-noto-serif text-white text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl uppercase font-bold mb-10 md:mb-[60px]"
+  >
+    Servicios
+  </h2>
+  <p class="text-white max-w-[80ch] font-extralight mb-5 mx-auto">
+    Desde la creación de la atmósfera perfecta hasta el soporte logístico
+    integral, nuestros servicios abarcan cada aspecto crucial de la
+    planificación y ejecución de tu evento.
+  </p>
+  <p class="text-white max-w-[80ch] font-extralight mb-12 mx-auto">
+    Explora todo lo que ofrecemos y déjanos encargarnos de cada detalle para que
+    tú puedas disfrutar de un evento inolvidable.
+  </p>
+  <section
+    class="flex flex-wrap items-start justify-center gap-x-20 gap-y-12 mb-4"
+  >
+    <Card
+      title="Ambientación"
+      desc="Crea el ambiente perfecto con una combinación de:"
+      elements={[
+        "Decoración",
+        "Iluminación cautivadora",
+        "Creación de cartelería",
+        "Experiencia auditiva excepcional",
+      ]}
+    />
+    <Card
+      title="Apoyo"
+      desc="Recibe el respaldo necesario para que tu evento sea un éxito con servicios esenciales como:"
+      elements={[
+        "Personal de apoyo (azafatas)",
+        "Delicioso catering",
+        "Asesoramiento en todo lo que necesites",
+      ]}
+    />
+    <Card
+      title="Infraestructura"
+      desc="Encuentra todo lo que necesitas para la estructura básica de tu evento, desde:"
+      elements={[
+        "Fincas para la celebración",
+        "Menaje esencial",
+        "Mobiliario de cómodo para ti y tus invitados",
+      ]}
+    />
+  </section>
+</section>
